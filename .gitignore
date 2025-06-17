@@ -12,3 +12,7 @@
 /.vs/jenofanes/CopilotIndices/17.14.734.62261/SemanticSymbols.db-wal
 *.vsidx
 /.vs/jenofanes/config/applicationhost.config
+/.vs/jenofanes/v17/.wsuo
+/.vs/jenofanes/v17/DocumentLayout.json
+/.vs/VSWorkspaceState.json
+*.sqlite-journal
