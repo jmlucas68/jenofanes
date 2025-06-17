@@ -1,0 +1,204 @@
+:root {
+    --color-primario: #2c3e50; /* Gris oscuro azulado */
+    --color-secundario: #ecf0f1; /* Gris muy claro */
+    --color-acento: #e67e22; /* Naranja */
+    --color-texto: #34495e; /* Gris oscuro */
+    --fuente-titulos: 'Montserrat', sans-serif;
+    --fuente-cuerpo: 'Lora', serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--fuente-cuerpo);
+    line-height: 1.7;
+    background-color: var(--color-secundario);
+    color: var(--color-texto);
+}
+
+/* --- Estructura y Contenedor --- */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+section {
+    background-color: #fff;
+    margin-bottom: 2rem;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* --- Efecto de aparición con JS --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+/* --- Cabecera (Hero) --- */
+.hero {
+    height: 60vh;
+    min-height: 400px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1599171501726-a445d472a1ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-family: var(--fuente-titulos);
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.hero .subtitle {
+    font-family: var(--fuente-cuerpo);
+    font-style: italic;
+    font-size: 1.4rem;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+/* --- Tipografía --- */
+h2 {
+    font-family: var(--fuente-titulos);
+    color: var(--color-primario);
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--color-acento);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+h3 {
+    font-family: var(--fuente-titulos);
+    color: var(--color-primario);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+blockquote {
+    font-family: var(--fuente-cuerpo);
+    font-style: italic;
+    font-size: 1.1rem;
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    border-left: 5px solid var(--color-acento);
+    background-color: #f9f9f9;
+    border-radius: 0 5px 5px 0;
+}
+
+a {
+    color: var(--color-acento);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+    a:hover {
+        color: var(--color-primario);
+        text-decoration: underline;
+    }
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+    ul li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+    }
+
+        ul li::before {
+            content: '»';
+            color: var(--color-acento);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+/* --- Secciones Específicas --- */
+.grid-pensamiento {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background: #fdfdfd;
+    padding: 1.5rem;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+.influencias-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.influencia-card {
+    flex: 1;
+    min-width: 280px;
+}
+
+/* --- Pie de página --- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--color-primario);
+    color: var(--color-secundario);
+    font-size: 0.9rem;
+}
+
+/* --- Responsividad --- */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .influencias-container {
+        flex-direction: column;
+    }
+}

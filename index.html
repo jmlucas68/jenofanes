@@ -3,689 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jenófanes de Colofón - Filósofo y Poeta</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.7;
-            color: #2c3e50;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23000000" stop-opacity="0.3"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23a)"/></svg>');
-            background-size: cover;
-        }
-
-        .hero-content {
-            color: white;
-            z-index: 2;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            font-weight: 300;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            background: linear-gradient(45deg, #fff, #f0f0f0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .hero-dates {
-            font-size: 1.2rem;
-            font-style: italic;
-            opacity: 0.8;
-        }
-
-        /* Navigation */
-        .nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            transform: translateY(-100%);
-            transition: transform 0.3s ease;
-        }
-
-            .nav.visible {
-                transform: translateY(0);
-            }
-
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            list-style: none;
-        }
-
-            .nav-links a {
-                text-decoration: none;
-                color: #2c3e50;
-                font-weight: 500;
-                transition: color 0.3s ease;
-                position: relative;
-            }
-
-                .nav-links a:hover {
-                    color: #667eea;
-                }
-
-                .nav-links a::after {
-                    content: '';
-                    position: absolute;
-                    width: 0;
-                    height: 2px;
-                    bottom: -5px;
-                    left: 0;
-                    background: #667eea;
-                    transition: width 0.3s ease;
-                }
-
-                .nav-links a:hover::after {
-                    width: 100%;
-                }
-
-        /* Main Content Sections */
-        .section {
-            padding: 5rem 0;
-            background: white;
-            margin: 2rem 0;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-
-            .section.visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            .section:nth-child(even) {
-                background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #2c3e50;
-            position: relative;
-        }
-
-            .section-title::after {
-                content: '';
-                width: 100px;
-                height: 3px;
-                background: linear-gradient(45deg, #667eea, #764ba2);
-                position: absolute;
-                bottom: -10px;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-        /* Biography Grid */
-        .bio-grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .bio-image {
-            text-align: center;
-        }
-
-        .philosopher-portrait {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-            margin: 0 auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: pulse 2s infinite;
-        }
-
-        /* Quote Styles */
-        .quote {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-        }
-
-            .quote::before {
-                content: '"';
-                font-size: 4rem;
-                position: absolute;
-                top: -10px;
-                left: 20px;
-                opacity: 0.3;
-            }
-
-        .quote-text {
-            font-style: italic;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .quote-author {
-            text-align: right;
-            font-weight: bold;
-            opacity: 0.8;
-        }
-
-        /* Cards */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 5px solid #667eea;
-        }
-
-            .card:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            }
-
-            .card h3 {
-                color: #667eea;
-                margin-bottom: 1rem;
-                font-size: 1.3rem;
-            }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-            .timeline::before {
-                content: '';
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 3px;
-                height: 100%;
-                background: linear-gradient(to bottom, #667eea, #764ba2);
-            }
-
-        .timeline-item {
-            display: flex;
-            justify-content: center;
-            margin: 2rem 0;
-            position: relative;
-        }
-
-        .timeline-content {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            width: 45%;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: auto;
-        }
-
-        .timeline-date {
-            font-weight: bold;
-            color: #667eea;
-            font-size: 1.1rem;
-        }
-
-        /* Links Section */
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .link-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border-top: 3px solid #667eea;
-        }
-
-            .link-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            }
-
-            .link-card h4 {
-                color: #2c3e50;
-                margin-bottom: 0.5rem;
-            }
-
-            .link-card a {
-                color: #667eea;
-                text-decoration: none;
-                font-weight: 500;
-                transition: color 0.3s ease;
-            }
-
-                .link-card a:hover {
-                    color: #764ba2;
-                    text-decoration: underline;
-                }
-
-        /* Footer */
-        .footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .bio-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .nav-links {
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-content {
-                width: calc(100% - 60px);
-                margin-left: 60px !important;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: rgba(255,255,255,0.3);
-            z-index: 1001;
-        }
-
-        .scroll-progress {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            width: 0%;
-            transition: width 0.1s ease;
-        }
-    </style>
+    <title>Jenófanes de Colofón: El Poeta Filósofo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Scroll Progress Indicator -->
-    <div class="scroll-indicator">
-        <div class="scroll-progress" id="scrollProgress"></div>
-    </div>
 
-    <!-- Navigation -->
-    <nav class="nav" id="nav">
-        <div class="container">
-            <ul class="nav-links">
-                <li><a href="#biografia">Biografía</a></li>
-                <li><a href="#pensamiento">Pensamiento</a></li>
-                <li><a href="#obras">Obras</a></li>
-                <li><a href="#influencias">Influencias</a></li>
-                <li><a href="#contexto">Contexto</a></li>
-                <li><a href="#fuentes">Fuentes</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
+    <header class="hero">
         <div class="hero-content">
             <h1>Jenófanes de Colofón</h1>
-            <p class="hero-subtitle">Filósofo, Poeta y Crítico de la Religión</p>
-            <p class="hero-dates">c. 570 - c. 475 a.C.</p>
+            <p class="subtitle">El pensador errante que desafió a los dioses y a la certeza</p>
         </div>
-    </section>
+    </header>
 
-    <div class="container">
-        <!-- Biografía -->
-        <section id="biografia" class="section">
-            <h2 class="section-title">Biografía</h2>
-            <div class="bio-grid">
-                <div class="bio-image">
-                    <div class="philosopher-portrait">
-                        Ξ
-                    </div>
-                </div>
-                <div class="bio-content">
-                    <p>Jenófanes de Colofón (c. 570-475 a.C.) fue un filósofo y poeta griego, considerado uno de los pensadores más influyentes de la tradición presocrática. Nació en Colofón, una ciudad de Jonia en Asia Menor, y vivió una vida extraordinariamente larga para su época.</p>
+    <main class="container">
 
-                    <p>A los 25 años, Jenófanes abandonó su ciudad natal, posiblemente debido a la conquista persa de Jonia, y comenzó una vida de constante viaje por el mundo griego. Durante más de sesenta años recorrió diversas ciudades como rapsodo, recitando sus propios versos y ganándose la vida como poeta itinerante.</p>
+        <section id="introduccion" class="fade-in">
+            <h2>¿Quién fue Jenófanes?</h2>
+            <p>Jenófanes (c. 570 a.C. – c. 475 a.C.) fue un filósofo presocrático, poeta y rapsoda griego, originario de Colofón, en Jonia (actual Turquía). Vivió una vida extraordinariamente larga, casi un siglo, gran parte de la cual la pasó como un pensador errante por las ciudades griegas de Sicilia y el sur de Italia. Es considerado una figura de transición, un puente entre el pensamiento mítico y el racional, y un precursor de la escuela eleática.</p>
+        </section>
 
-                    <p>Su obra combina la poesía tradicional con la reflexión filosófica profunda, siendo pionero en la crítica racional de las creencias religiosas populares y en el desarrollo de conceptos teológicos y epistemológicos que influirían profundamente en el pensamiento occidental.</p>
-                </div>
+        <section id="contexto" class="fade-in">
+            <h2>Contexto Histórico y Filosófico</h2>
+            <p>Jenófanes vivió en una época de grandes convulsiones y cambios. La Jonia de su juventud era un hervidero cultural y comercial, cuna de la filosofía con pensadores como Tales, Anaximandro y Anaxímenes. Sin embargo, tuvo que exiliarse debido a la invasión persa (c. 545 a.C.). Su vida itinerante le permitió conocer una amplia variedad de culturas y creencias, lo que sin duda alimentó su escepticismo y su crítica al relativismo cultural de los dioses.</p>
+        </section>
+
+        <section id="pensamiento" class="fade-in">
+            <h2>Principales Ideas Filosóficas</h2>
+            <div class="grid-pensamiento">
+                <article class="card">
+                    <h3>Crítica al Antropomorfismo</h3>
+                    <p>La idea más célebre de Jenófanes es su demoledora crítica a la concepción homérica y hesiódica de los dioses. Acusó a los poetas de atribuir a las deidades todos los vicios y debilidades humanas.</p>
+                    <blockquote>"Los mortales se imaginan que los dioses han nacido y que tienen vestidos, voz y figura como ellos."</blockquote>
+                    <blockquote>"Pero si los bueyes, los caballos o los leones tuvieran manos y pudieran dibujar y crear obras como los hombres, los caballos dibujarían figuras de dioses semejantes a los caballos, y los bueyes a los bueyes, y harían sus cuerpos tal como cada uno tiene el suyo."</blockquote>
+                </article>
+
+                <article class="card">
+                    <h3>Un Dios Único, Abstracto y Racional</h3>
+                    <p>Frente a la multiplicidad de dioses olímpicos, Jenófanes postuló la existencia de un solo dios, el más grande, que no se asemeja a los mortales ni en forma ni en pensamiento. Este dios es eterno, inmutable, y lo gobierna todo con el poder de su mente, sin esfuerzo físico.</p>
+                    <blockquote>"Un solo dios, el más grande entre dioses y hombres, en nada semejante a los mortales ni en el cuerpo ni en el pensamiento."</blockquote>
+                    <blockquote>"Todo él ve, todo él piensa, todo él oye. (...) Siempre permanece en el mismo lugar, sin moverse en absoluto, ni le es propio trasladarse de un lado a otro."</blockquote>
+                </article>
+
+                <article class="card">
+                    <h3>Epistemología: La Búsqueda y la Opinión</h3>
+                    <p>Jenófanes es uno de los primeros en reflexionar sobre los límites del conocimiento humano. Distinguió entre la verdad absoluta (accesible solo a la divinidad) y la opinión o conjetura (el único camino para los mortales). Creía que, aunque no podemos alcanzar la certeza, la búsqueda de un conocimiento mejor es valiosa.</p>
+                    <blockquote>"Y, ciertamente, la verdad clara no la ha visto hombre alguno, ni la verá, sobre los dioses y sobre cuantas cosas digo; pues, aunque por azar acierte a decir lo más perfecto, ni él mismo lo sabe. Sobre todas las cosas no hay más que opinión (<em>doxa</em>)."</blockquote>
+                </article>
+
+                <article class="card">
+                    <h3>Filosofía Natural</h3>
+                    <p>Fue también un agudo observador de la naturaleza. A partir del hallazgo de fósiles de peces y conchas marinas en el interior de montañas, dedujo que la tierra había estado cubierta de agua en el pasado y que el mundo experimenta ciclos de humedad y sequía. Se le atribuye la idea de que todo procede de la tierra y el agua.</p>
+                    <blockquote>"Todo lo que nace y crece es tierra y agua."</blockquote>
+                    <blockquote>"En ciertas grutas se ha visto gotear el agua. Se han encontrado en Siracusa, en las canteras, improntas de peces y de focas; en Paros, la impronta de un laurel en el fondo de una roca, y en Malta, restos de toda clase de animales marinos."</blockquote>
+                </article>
             </div>
         </section>
 
-        <!-- Pensamiento Filosófico -->
-        <section id="pensamiento" class="section">
-            <h2 class="section-title">Pensamiento Filosófico</h2>
-
-            <div class="quote">
-                <p class="quote-text">"Pero si las manos tuvieran los bueyes, los caballos y los leones, o pudieran dibujar con las manos y realizar las obras que realizan los hombres, los caballos semejantes a los caballos, los bueyes semejantes a los bueyes, dibujarían las figuras de los dioses e imaginarían sus cuerpos tal como cada uno tiene el suyo propio."</p>
-                <p class="quote-author">— Fragmento DK 15</p>
-            </div>
-
-            <div class="cards-grid">
-                <div class="card">
-                    <h3>Crítica Antropomórfica</h3>
-                    <p>Jenófanes fue el primer filósofo en criticar sistemáticamente la representación antropomórfica de los dioses. Argumentaba que los humanos crean dioses a su propia imagen, señalando que los etíopes representan a sus dioses como negros y los tracios como rubios y de ojos azules.</p>
-                </div>
-
-                <div class="card">
-                    <h3>Monoteísmo Filosófico</h3>
-                    <p>Propuso la existencia de un dios único, inmutable e inmóvil, que gobierna todas las cosas mediante su pensamiento. Este dios no se asemeja a los mortales ni en forma ni en pensamiento, siendo completamente trascendente.</p>
-                </div>
-
-                <div class="card">
-                    <h3>Epistemología Escéptica</h3>
-                    <p>Desarrolló una de las primeras teorías del conocimiento escépticas, distinguiendo entre conocimiento cierto (que solo poseen los dioses) y opinión humana, estableciendo los límites del conocimiento humano.</p>
-                </div>
-
-                <div class="card">
-                    <h3>Cosmología</h3>
-                    <p>Propuso teorías sobre la naturaleza del cosmos, incluyendo la idea de que la tierra se extiende infinitamente hacia abajo y que los fenómenos celestes tienen explicaciones naturales, no divinas.</p>
-                </div>
-            </div>
-
-            <div class="quote">
-                <p class="quote-text">"No desde el principio revelaron los dioses todas las cosas a los mortales, sino que éstos, buscando a través del tiempo, encuentran lo mejor."</p>
-                <p class="quote-author">— Fragmento DK 18</p>
-            </div>
-        </section>
-
-        <!-- Principales Obras -->
-        <section id="obras" class="section">
-            <h2 class="section-title">Principales Obras y Fragmentos</h2>
-
-            <p style="text-align: center; margin-bottom: 2rem; font-style: italic;">La obra de Jenófanes se conserva principalmente en fragmentos transmitidos por autores posteriores. Sus principales composiciones incluían elegías y sátiras.</p>
-
-            <div class="cards-grid">
-                <div class="card">
-                    <h3>Elegías</h3>
-                    <p>Composiciones poéticas en las que expresa su filosofía natural y teológica. Los fragmentos conservados muestran su crítica a las creencias religiosas tradicionales.</p>
-                </div>
-
-                <div class="card">
-                    <h3>Sátiras (Silloi)</h3>
-                    <p>Poemas satíricos dirigidos contra Homero y Hesíodo, criticando sus representaciones antropomórficas de los dioses y sus narrativas mitológicas.</p>
-                </div>
-
-                <div class="card">
-                    <h3>Sobre la Naturaleza</h3>
-                    <p>Obra que contenía sus teorías cosmológicas y físicas, incluyendo explicaciones naturales de fenómenos como los eclipses y los cometas.</p>
-                </div>
-            </div>
-
-            <h3 style="margin: 3rem 0 2rem 0; text-align: center; color: #667eea;">Enlaces a Obras y Textos</h3>
-
-            <div class="links-grid">
-                <div class="link-card">
-                    <h4>Fragmentos en Español</h4>
-                    <p><a href="https://archive.org/details/fragmentospresocrticos" target="_blank">Los Filósofos Presocráticos - Archive.org</a></p>
-                    <p><a href="https://www.amazon.es/dp/8424936458" target="_blank">Fragmentos Presocráticos - Amazon España</a></p>
-                </div>
-
-                <div class="link-card">
-                    <h4>Ediciones Críticas</h4>
-                    <p><a href="https://www.amazon.es/dp/8424908791" target="_blank">Los Primeros Filósofos Griegos - Gredos</a></p>
-                    <p><a href="https://archive.org/details/earlygreekmyth00west" target="_blank">Early Greek Philosophy - Archive.org</a></p>
-                </div>
-
-                <div class="link-card">
-                    <h4>Traducciones Modernas</h4>
-                    <p><a href="https://www.amazon.es/dp/8496431568" target="_blank">Jenófanes: Fragmentos y Testimonios</a></p>
-                    <p><a href="https://gutenberg.org/ebooks/search/?query=presocratic" target="_blank">Project Gutenberg - Filosofía Griega</a></p>
-                </div>
-            </div>
-
-            <div class="quote">
-                <p class="quote-text">"Un solo dios, el mayor entre los dioses y los hombres, ni en figura ni en pensamiento semejante a los mortales."</p>
-                <p class="quote-author">— Fragmento DK 23</p>
-            </div>
-        </section>
-
-        <!-- Influencias -->
-        <section id="influencias" class="section">
-            <h2 class="section-title">Influencias Recibidas y Ejercidas</h2>
-
-            <div class="bio-grid">
-                <div>
-                    <h3 style="color: #667eea; margin-bottom: 1rem;">Influencias Recibidas</h3>
-                    <ul style="margin-left: 2rem;">
-                        <li><strong>Tradición Épica:</strong> Homero y Hesíodo, aunque los critica, influyen en su forma poética</li>
-                        <li><strong>Filosofía Jónica:</strong> Tales y Anaximandro en sus especulaciones cosmológicas</li>
-                        <li><strong>Tradición Elegíaca:</strong> Arquíloco y Solón en su forma métrica y estilo</li>
-                        <li><strong>Religión Órfica:</strong> Posibles influencias en su concepción de la divinidad</li>
+        <section id="influencias" class="fade-in">
+            <h2>Influencias Recibidas y Ejercidas</h2>
+            <div class="influencias-container">
+                <div class="influencia-card">
+                    <h3>Influencias Recibidas</h3>
+                    <ul>
+                        <li><strong>Homero y Hesíodo:</strong> Aunque su principal objetivo de crítica, fueron su punto de partida. Su filosofía nace como una reacción directa a la teología mítica que ellos representaban.</li>
+                        <li><strong>Filósofos de Mileto (Tales, Anaximandro):</strong> Compartió con ellos el interés por encontrar explicaciones naturales (<em>physis</em>) a los fenómenos del mundo.</li>
                     </ul>
                 </div>
-
-                <div>
-                    <h3 style="color: #764ba2; margin-bottom: 1rem;">Influencias Ejercidas</h3>
-                    <ul style="margin-left: 2rem;">
-                        <li><strong>Parménides:</strong> Continuación de la crítica epistemológica y ontológica</li>
-                        <li><strong>Empédocles:</strong> Influencia en la concepción de la divinidad</li>
-                        <li><strong>Platón:</strong> Crítica de la poesía mimética y teoría del conocimiento</li>
-                        <li><strong>Aristóteles:</strong> Clasificación como precursor del monoteísmo</li>
-                        <li><strong>Cristianismo:</strong> Influencia indirecta en la teología cristiana primitiva</li>
+                <div class="influencia-card">
+                    <h3>Influencias Ejercidas</h3>
+                    <ul>
+                        <li><strong>Escuela Eleática:</strong> Se le considera el precursor de Parménides y Zenón. Su idea de un Ser único, eterno e inmutable es un claro antecedente del Ser parmenídeo.</li>
+                        <li><strong>Platón y Aristóteles:</strong> Su crítica a los poetas por corromper la moral y ofrecer una imagen falsa de la divinidad fue retomada y ampliada por Platón en "La República".</li>
+                        <li><strong>Pensamiento Teológico Posterior:</strong> Su concepción de un dios abstracto, único y no-antropomórfico influyó en el desarrollo de la teología filosófica y monoteísta.</li>
                     </ul>
                 </div>
             </div>
-
-            <div class="quote">
-                <p class="quote-text">"Homero y Hesíodo han atribuido a los dioses todo lo que entre los hombres es objeto de oprobio y censura: robar, cometer adulterio y engañarse mutuamente."</p>
-                <p class="quote-author">— Fragmento DK 11</p>
-            </div>
         </section>
 
-        <!-- Contexto Histórico -->
-        <section id="contexto" class="section">
-            <h2 class="section-title">Contexto Histórico y Filosófico</h2>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">s. VI a.C.</div>
-                        <h4>Período Arcaico Griego</h4>
-                        <p>Época de grandes transformaciones sociales, políticas y culturales. Surgimiento de la polis y desarrollo del pensamiento racional.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">c. 546 a.C.</div>
-                        <h4>Conquista Persa de Jonia</h4>
-                        <p>Ciro II conquista las ciudades griegas de Asia Menor, incluyendo Colofón. Muchos intelectuales emigran hacia el oeste.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">s. VI a.C.</div>
-                        <h4>Escuela Jónica</h4>
-                        <p>Desarrollo de la filosofía natural con Tales, Anaximandro y Anaximenes. Búsqueda de explicaciones racionales del cosmos.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">s. V a.C.</div>
-                        <h4>Filosofía Eleática</h4>
-                        <p>Parménides desarrolla las ideas epistemológicas iniciadas por Jenófanes. Distinción entre verdad y opinión.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cards-grid">
-                <div class="card">
-                    <h3>Contexto Cultural</h3>
-                    <p>Jenófanes vivió durante el florecimiento de la cultura griega arcaica, cuando la poesía épica y lírica alcanzaba su madurez y comenzaba a cuestionarse la tradición mitológica.</p>
-                </div>
-
-                <div class="card">
-                    <h3>Contexto Filosófico</h3>
-                    <p>Forma parte de la primera generación de filósofos que buscan explicaciones racionales del mundo, alejándose de las explicaciones puramente mitológicas.</p>
-                </div>
-
-                <div class="card">
-                    <h3>Contexto Social</h3>
-                    <p>Vive como rapsodo itinerante en una época de grandes migraciones y intercambios culturales, lo que amplía su perspectiva sobre la diversidad de creencias humanas.</p>
-                </div>
-            </div>
+        <section id="obras" class="fade-in">
+            <h2>Obras y Fragmentos</h2>
+            <p>La obra de Jenófanes no ha sobrevivido completa. Lo que conservamos son fragmentos citados por autores posteriores (como Platón, Sexto Empírico o Diógenes Laercio). Su obra se suele clasificar en elegías y un poema didáctico-filosófico llamado "Sobre la Naturaleza".</p>
+            <p>Dado que no existen libros completos de Jenófanes, la mejor forma de acceder a sus ideas es a través de compilaciones de los filósofos presocráticos.</p>
+            <ul>
+                <li>
+                    <strong>Opción Gratuita (Colección de Fragmentos):</strong>
+                    <a href="https://archive.org/details/losfilsofospre00kirkuoft/page/n5/mode/2up" target="_blank" rel="noopener noreferrer">"Los Filósofos Presocráticos" de Kirk, Raven y Schofield en Archive.org</a> (Una obra académica de referencia, en inglés).
+                    Para español, la búsqueda de PDFs de "Filósofos Presocráticos Gredos" puede arrojar resultados en bibliotecas digitales.
+                </li>
+                <li>
+                    <strong>Opción de Compra (Edición recomendada en español):</strong>
+                    <a href="https://www.amazon.es/Filósofos-presocráticos-Biblioteca-Clásica-Gredos/dp/8424935673/" target="_blank" rel="noopener noreferrer">"Los Filósofos Presocráticos" - Editorial Gredos en Amazon</a> (Esta edición es la canónica en español, incluye los fragmentos de Jenófanes con un excelente aparato crítico).
+                </li>
+            </ul>
         </section>
 
-        <!-- Fuentes y Referencias -->
-        <section id="fuentes" class="section">
-            <h2 class="section-title">Fuentes y Referencias</h2>
+        <section id="fuentes" class="fade-in">
+            <h2>Fuentes y Enlaces de Interés</h2>
+            <p>Para profundizar en la vida y obra de Jenófanes, se recomiendan los siguientes recursos:</p>
+            <ul>
+                <li><a href="https://es.wikipedia.org/wiki/Jenófanes" target="_blank" rel="noopener noreferrer">Artículo de Jenófanes en Wikipedia</a></li>
+                <li><a href="https://plato.stanford.edu/entries/xenophanes/" target="_blank" rel="noopener noreferrer">Xenophanes en la Stanford Encyclopedia of Philosophy (en inglés)</a></li>
+                <li><a href="https://www.academia.edu/Documents/in/Jenófanes_de_Colofón" target="_blank" rel="noopener noreferrer">Artículos sobre Jenófanes en Academia.edu</a></li>
+                <li><a href="https://symploke.trujaman.org/index.php?title=Jen%F3fanes" target="_blank" rel="noopener noreferrer">Fragmentos de Jenófanes en Symploké</a></li>
+            </ul>
+        </section>
 
-            <h3 style="margin: 2rem 0 1rem 0; color: #667eea;">Fuentes Académicas</h3>
-            <div class="links-grid">
-                <div class="link-card">
-                    <h4>Academia.edu</h4>
-                    <p><a href="https://www.academia.edu/search?q=Xenophanes%20Colophon" target="_blank">Artículos sobre Jenófanes en Academia.edu</a></p>
-                    <p><a href="https://www.academia.edu/search?q=Presocratic%20philosophy" target="_blank">Filosofía Presocrática - Academia.edu</a></p>
-                </div>
+    </main>
 
-                <div class="link-card">
-                    <h4>Wikipedia</h4>
-                    <p><a href="https://es.wikipedia.org/wiki/Jen%C3%B3fanes" target="_blank">Jenófanes - Wikipedia (Español)</a></p>
-                    <p><a href="https://en.wikipedia.org/wiki/Xenophanes" target="_blank">Xenophanes - Wikipedia (English)</a></p>
-                </div>
+    <footer>
+        <p>Página creada con HTML, CSS y JS. Diseño conceptual por IA. 2023.</p>
+    </footer>
 
-                <div class="link-card">
-                    <h4>Stanford Encyclopedia</h4>
-                    <p><a href="https://plato.stanford.edu/entries/xenophanes/" target="_blank">Xenophanes - Stanford Encyclopedia of Philosophy</a></p>
-                    <p><a href="https://plato.stanford.edu/entries/presocratics/" target="_blank">Presocratic Philosophy - Stanford</a></p>
-                </div>
-            </div>
-
-            <h3 style="margin: 2rem 0 1rem 0; color: #764ba2;">Bibliografía Especializada</h3>
-            <div class="links-grid">
-                <div class="link-card">
-                    <h4>Ediciones Críticas</h4>
-                    <p><a href="https://www.amazon.es/dp/8424936458" target="_blank">Kirk, Raven & Schofield - Los Filósofos Presocráticos</a></p>
-                    <p><a href="https://www.amazon.es/dp/8424908791" target="_blank">Diels-Kranz - Fragmentos de los Presocráticos</a></p>
-                </div>
-
-                <div class="link-card">
-                    <h4>Estudios Monográficos</h4>
-                    <p><a href="https://www.amazon.es/dp/0521031990" target="_blank">Lesher - Xenophanes of Colophon</a></p>
-                    <p><a href="https://www.amazon.es/dp/8437636179" target="_blank">Bernabé - Fragmentos Presocráticos</a></p>
-                </div>
-
-                <div class="link-card">
-                    <h4>Recursos Digitales</h4>
-                    <p><a href="https://archive.org/details/earlygreekmyth00west" target="_blank">Early Greek Philosophy - Internet Archive</a></p>
-                    <p><a href="https://www.jstor.org/action/doBasicSearch?Query=Xenophanes" target="_blank">JSTOR - Artículos sobre Jenófanes</a></p>
-                </div>
-            </div>
-
-            <h3 style="margin: 2rem 0 1rem 0; color: #2c3e50;">Traducciones y Comentarios</h3>
-            <div class="links-grid">
-                <div class="link-card">
-                    <h4>Español</h4>
-                    <p><a href="https://www.amazon.es/dp/8437611504" target="_blank">Eggers Lan - Los Filósofos Presocráticos</a></p>
-                    <p><a href="https://www.amazon.es/dp/8437636179" target="_blank">Alberto Bernabé - De Tales a Demócrito</a></p>
-                </div>
-
-                <div class="link-card">
-                    <h4>Multilingüe</h4>
-                    <p><a href="https://archive.org/details/fragmentspresocratics" target="_blank">Fragmentos Presocráticos - Varias Lenguas</a></p>
-                    <p><a href=" https: //gutenberg.org/ebooks/
+    <script src="script.js"></script>
+</body>
+</html>
